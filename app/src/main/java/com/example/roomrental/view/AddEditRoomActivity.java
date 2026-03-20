@@ -75,7 +75,9 @@ public class AddEditRoomActivity extends AppCompatActivity {
         String phone = edtPhone.getText().toString().trim();
 
         // Validate dữ liệu từ Controller
-        String validationError = controller.validateRoom(id, name, priceStr);
+        boolean isNewRoom = (roomIndex == -1);
+        String validationError = controller.validateRoom(id, name, priceStr, phone, isNewRoom);
+
         if (!validationError.isEmpty()) {
             Toast.makeText(this, validationError, Toast.LENGTH_SHORT).show();
             return;
